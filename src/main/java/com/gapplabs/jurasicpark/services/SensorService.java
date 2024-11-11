@@ -52,4 +52,17 @@ public class SensorService {
             }
         });
     }
+
+    public CompletableFuture<String> deleteSensor(String id) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                WriteResult result = sensorRepository.deleteSensor(id).get();
+                logger.info("Sensor eliminado correctamente: " + result);
+                return result.getUpdateTime().toString();
+            } catch (InterruptedException | ExecutionException e) {
+                logger.error("Error al eliminar el sensor: " + e.getMessage());
+                throw new RuntimeException("Error al eliminar el sensor: " + e.getMessage());
+            }
+        });
+    }
 }
