@@ -15,7 +15,7 @@ public abstract class DataProcessor<T> {
     // Validación genérica de los datos
     protected void validate(T data) {
         if (data == null) {
-            throw new IllegalArgumentException("Data cannot be null");
+            throw new IllegalArgumentException("No se pueden procesar datos nulos");
         }
     }
 
@@ -24,11 +24,11 @@ public abstract class DataProcessor<T> {
 
     // Publicación del resultado procesado
     protected void publishResult(T result) {
-        System.out.println("Processed result: " + result);
+        System.out.println("Resultado: " + result);
     }
 
     // Manejo de errores durante el procesamiento
     protected void handleError(Throwable error) {
-        System.err.println("Error processing data: " + error.getMessage());
+        System.err.println("Error procesando los datos: " + error.getMessage());
     }
 }

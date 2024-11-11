@@ -30,6 +30,7 @@ public class AnomalyDetectionAlertStrategy extends AlertStrategy {
     // Configuración adicional para tipos de alertas específicas
     @Override
     public void execute() {
-        System.out.println("Executing anomaly detection strategy for " + sensorType + ": " + getAlertMessage());
+        System.out.println("Ejecutando estrategia de deteccion de anomalias para:" + sensorType + ": " + getAlertMessage());
     }
 }
+//Ejecutando estrategia de deteccion de anomalias

@@ -11,13 +11,13 @@ public class HeartRateDataProcessor extends DataProcessor<Integer> {
     @Override
     protected Flux<Integer> process(Integer data) {
         if (data > HEART_RATE_THRESHOLD) {
-            AlertUtils.sendAlert(data, "High heart rate detected!");
+            AlertUtils.sendAlert(data, "Alto ritmo cardíaco detectado!");
         }
         return Flux.just(data); // Retorna el dato para continuar con la cadena de procesamiento
     }
 
     @Override
     protected void publishResult(Integer result) {
-        System.out.println("Processed heart rate data: " + result);
+        System.out.println("Resultado: " + result);
     }
 }

@@ -10,13 +10,13 @@ public class TemperatureDataProcessor extends DataProcessor<Double> {
     @Override
     protected Flux<Double> process(Double data) {
         if (data > TEMPERATURE_THRESHOLD) {
-            AlertUtils.sendAlert(data, "High temperature detected!");
+            AlertUtils.sendAlert(data, "Alta temperatura detectada!");
         }
         return Flux.just(data); // Retorna el dato para continuar con la cadena de procesamiento
     }
 
     @Override
     protected void publishResult(Double result) {
-        System.out.println("Processed temperature data: " + result);
+        System.out.println("Resultado" + result);
     }
 }
