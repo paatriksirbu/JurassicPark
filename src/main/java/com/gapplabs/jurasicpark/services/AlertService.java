@@ -52,5 +52,16 @@ public class AlertService {
         });
     }
 
-
+    public CompletableFuture<String> deleteAlert(String id) {
+        return CompletableFuture.supplyAsync(() -> {
+            try {
+                WriteResult result = alertRepository.deleteAlert(id).get();
+                logger.info("Alerta eliminada correctamente: " + result);
+                return result.getUpdateTime().toString();
+            } catch (InterruptedException | ExecutionException e) {
+                logger.error("Error al eliminar la alerta: " + e.getMessage());
+                throw new RuntimeException("Error al eliminar la alerta: " + e.getMessage());
+            }
+        });
+    }
 }
