@@ -1,4 +1,4 @@
-package com.gapplabs.jurasicpark.models.DinoTypes;
+package com.gapplabs.jurasicpark.models.Types.Dinos;
 
 import com.gapplabs.jurasicpark.models.Dinosaur;
 

@@ -1,24 +1,32 @@
 package com.gapplabs.jurasicpark.models;
 
-import lombok.Getter;
-import lombok.Setter;
+import com.gapplabs.jurasicpark.models.Dinosaur;
 
-@Getter
-@Setter
-public class Island {
-    private String id;
-    private String name;
-    private String description;
-    private String location;
+import java.util.ArrayList;
+import java.util.List;
 
-    // Constructor vacio
-    public Island() {}
+public abstract class Island {
+    protected List<Dinosaur> dinosaurs = new ArrayList<>();
 
-    // Constructor con todos los atributos
-    public Island(String id, String name, String description, String location) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.location = location;
+    public final void operateIsland() {
+        System.out.println("Isla: " + this.getClass().getSimpleName());
+        createDinosaurs();
+        performActivities();
+        monitorDinosaurs();
+    }
+
+    protected abstract void createDinosaurs();
+
+    protected void performActivities() {
+        for (Dinosaur dinosaur : dinosaurs) {
+            dinosaur.feed();
+            dinosaur.move();
+            dinosaur.makeSound();
+        }
+    }
+
+    protected void monitorDinosaurs() {
+        System.out.println("Monitorizando dinosaurios en: " + this.getClass().getSimpleName());
+        System.out.println("Numero de dinosaurios: " + dinosaurs.size());
     }
 }
