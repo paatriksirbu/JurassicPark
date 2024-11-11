@@ -1,5 +1,6 @@
 package com.gapplabs.jurasicpark.models;
 
+import com.gapplabs.jurasicpark.enums.AlertLevel;
 import com.gapplabs.jurasicpark.enums.SensorStatus;
 import com.gapplabs.jurasicpark.enums.SensorType;
 import lombok.Getter;
@@ -23,4 +24,21 @@ public class Sensor {
         this.status = status;
         this.location = location;
     }
+    
+    public String getId() {
+		return id;
+	}
+	
+	public SensorType getLevel() {
+		return type;
+	}
+	
+	public SensorStatus getStatus() {
+		return status;
+	}
+	
+	public String getLocation() {
+		return location;
+	}
+    
 }

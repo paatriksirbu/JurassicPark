@@ -1,5 +1,7 @@
 package com.gapplabs.jurasicpark.models;
 
+import com.gapplabs.jurasicpark.enums.AlertLevel;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -21,4 +23,21 @@ public class SensorData {
         this.value = value;
         this.timestamp = timestamp;
     }
+    
+    public String getId() {
+		return id;
+	}
+	
+	public String getSensorId() {
+		return sensorId;
+	}
+	
+	public Double value() {
+		return value;
+	}
+	
+	public Long getTimestamp() {
+		return timestamp;
+	}
+    
 }

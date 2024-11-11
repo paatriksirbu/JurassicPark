@@ -22,4 +22,21 @@ public class Alert {
         this.description = description;
         this.timestamp = timestamp;
     }
+    
+	public String getId() {
+		return id;
+	}
+	
+	public AlertLevel getLevel() {
+		return level;
+	}
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public Long getTimestamp() {
+		return timestamp;
+	}
+    
 }
