@@ -1,4 +1,6 @@
 package com.gapplabs.jurasicpark.observers;
 
-public class AlertObserver {
+public class AlertObserver{
+
+    //Definimos observador alerta
 }

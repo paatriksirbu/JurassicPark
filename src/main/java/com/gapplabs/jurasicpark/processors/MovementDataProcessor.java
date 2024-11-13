@@ -10,13 +10,13 @@ public class MovementDataProcessor extends DataProcessor<Integer> {
     @Override
     protected Flux<Integer> process(Integer data) {
         if (data > MOVEMENT_THRESHOLD) {
-            AlertUtils.sendAlert(data, "High movement detected!");
+            AlertUtils.sendAlert(data, "Alto nivel de actividad detectado!");
         }
         return Flux.just(data); // Retorna el dato para continuar con la cadena de procesamiento
     }
 
     @Override
     protected void publishResult(Integer result) {
-        System.out.println("Processed movement data: " + result);
+        System.out.println("Resultado: " + result);
     }
 }
