@@ -1,7 +1,5 @@
 package com.gapplabs.jurasicpark.models;
 
-import com.gapplabs.jurasicpark.enums.AlertLevel;
-
 import lombok.Getter;
 import lombok.Setter;
 

@@ -1,36 +1,30 @@
+// AnomalyDetectionAlertStrategy.java
 package com.gapplabs.jurasicpark.strategies;
 
 import com.gapplabs.jurasicpark.utils.AlertUtils;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
-public class AnomalyDetectionAlertStrategy extends AlertStrategy {
+public class AnomalyDetectionAlertStrategy implements AlertStrategy {
 
-    private final double threshold; // Umbral de detección de anomalías
-    private final String sensorType; // Tipo de sensor (ej. "Temperatura", "Frecuencia cardíaca")
+    private final double threshold;
+    private final String sensorType;
+    private final String alertMessage;
 
     public AnomalyDetectionAlertStrategy(String alertMessage, double threshold, String sensorType) {
-        super(alertMessage);
+        this.alertMessage = alertMessage;
         this.threshold = threshold;
         this.sensorType = sensorType;
     }
 
-    // Método para monitorear el flujo de datos y detectar anomalías
-    public <T extends Number> Flux<T> monitorDataStream(Flux<T> dataStream) {
-        return dataStream.flatMap(data -> {
+    @Override
+    public void processData(Flux<Number> dataStream) {
+        dataStream.flatMap(data -> {
             if (data.doubleValue() > threshold) {
-                // Enviar alerta usando AlertUtils si se detecta una anomalía
-                return AlertUtils.sendAlert(data, sensorType + " anomaly detected: " + getAlertMessage())
-                        .thenReturn(data); // Retorna el dato después de enviar la alerta
+                return AlertUtils.sendAlert(data, sensorType + " anomaly detected: " + alertMessage)
+                        .thenReturn(data);
             }
             return Mono.just(data);
-        });
-    }
-
-    // Configuración adicional para tipos de alertas específicas
-    @Override
-    public void execute() {
-        System.out.println("Ejecutando estrategia de deteccion de anomalias para:" + sensorType + ": " + getAlertMessage());
+        }).subscribe(); // Importante: realizar la suscripción para que se ejecute el flujo
     }
 }
-//Ejecutando estrategia de deteccion de anomalias

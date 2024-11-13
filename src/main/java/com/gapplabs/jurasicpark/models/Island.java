@@ -1,7 +1,5 @@
 package com.gapplabs.jurasicpark.models;
 
-import com.gapplabs.jurasicpark.models.Dinosaur;
-
 import java.util.ArrayList;
 import java.util.List;
 
